@@ -52,14 +52,28 @@ verde.
 
 El otro usuario y yo teníamos el mismo defecto con síntomas opuestos porque
 leíamos canales distintos del mismo programa: él el JSON (todo bloqueado), yo
-el código de salida (todo permitido). Publiqué la medición en el
-[issue](https://github.com/Gentleman-Programming/gentle-ai/issues/3939) y las
-piezas de tres reportes independientes encajaron.
+el código de salida (todo permitido).
+
+Publiqué la medición en el
+[issue #3939](https://github.com/Gentleman-Programming/gentle-ai/issues/3939),
+donde para entonces había tres reproducciones independientes, cada una
+aportando una pieza distinta:
+
+| Reporte | Entorno | Qué aportó |
+|---|---|---|
+| El mío (reporte original) | Windows · CLI puro · Claude Code | el ciclo llega a `approved` pero nunca materializa receipt; en 2.3.0 el mismo flujo cierra 8 de 8 |
+| [PedAltuve](https://github.com/Gentleman-Programming/gentle-ai/issues/3939#issuecomment-5493611716) | Linux · Pi (automatizado) | el acuse no acuña receipt y el linaje aprobado queda huérfano — reproduce con *provider*, descartando que fuera cosa del CLI puro |
+| [john2k2](https://github.com/Gentleman-Programming/gentle-ai/issues/3939#issuecomment-5502680504) | macOS · Codex · **2.5.0 estable** | el acuse quema la autoridad y el gate no la ve — confirma que no es solo del release candidate |
+
+Mi segunda medición —el código de salida `0` contradiciendo al veredicto— fue
+la pieza que explicó por qué el mismo defecto se veía como "todo bloqueado" en
+una máquina y "todo permitido" en otra.
 
 ## El arreglo, en dos capas
 
-1. **Volví a la versión anterior** de la herramienta — la única donde el ciclo
-   cierra completo y el candado responde en ambas direcciones. Guardar el
+1. **Volví a la versión anterior** de la herramienta — la única en la que,
+   en mi entorno y medido en ambas direcciones, el ciclo cierra completo y el
+   candado responde. Guardar el
    binario viejo antes de actualizar costó un comando al mediodía y salvó la
    noche.
 2. **El hook quedó más duro que antes**: ahora lee el veredicto del JSON
