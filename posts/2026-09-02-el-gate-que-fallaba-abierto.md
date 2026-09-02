@@ -101,6 +101,37 @@ La moraleja práctica, si tienes cualquier control automático del que dependes:
 
 ---
 
+## Actualización — horas después de publicar
+
+Leí por fin las [notas del release estable](https://github.com/Gentleman-Programming/gentle-ai/releases/tag/v2.5.0)
+— cosa que debí hacer **antes** de escribir todo lo de arriba — y cambian la
+naturaleza del hallazgo:
+
+> *"delivery gates are retired. `review validate` and the gate commands are
+> compatibility surfaces that report `unmanaged`"*
+
+**No era un bug: era un retiro deliberado y documentado.** En la versión nueva,
+el candado de entrega ya no es parte del producto; el `validate` que sale con
+código 0 diciendo "inválido" es la superficie de compatibilidad haciendo lo que
+diseñaron.
+
+Lo que la medición encontró sigue siendo cierto y sigue siendo peligroso: un
+hook de la era anterior queda desactivado **en silencio** al actualizar, y nada
+te avisa. Pero la palabra correcta no era "defecto" — era "cambio de contrato
+que ningún aviso me dio de frente, y que yo tampoco fui a leer".
+
+Publiqué la corrección [en el mismo hilo](https://github.com/Gentleman-Programming/gentle-ai/issues/3939#issuecomment-5504990271),
+porque sostener una afirmación equivocada cuesta más que corregirla.
+
+La lección extra, que completa la de arriba: **antes de reportar el
+comportamiento de un sistema como error, leé lo que su autor declaró sobre ese
+comportamiento.** Medí con rigor y concluí sin leer — la mitad del trabajo
+bien hecha no salva a la otra mitad. Esta actualización queda aquí, encima de
+mi conclusión original intacta, porque así se deja rastro: el error y su
+corrección, ambos con fecha.
+
+---
+
 *Esta bitácora deja una entrada por día. Lo que no se midió, se declara. Mañana:
 tres relojes se estrenan a las 06:30, 07:30 y 08:00 — un sistema que debe
 avisar, repararse y dejar constancia sin que nadie se lo pida.*
